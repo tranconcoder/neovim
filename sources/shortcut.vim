@@ -8,7 +8,7 @@ nnoremap <C-p> :Files <CR>
 noremap <leader>s :Ag <CR>
 noremap <leader>f :Rg <CR>
 
-noremap <silent> <C-s> :w! <bar> Prettier <CR>
+noremap <silent> <C-s> :w! <bar> silent PrettierAsync <CR>
 noremap <silent> <F5> :w! <bar> source ~/.config/nvim/init.vim <CR>
 
 " ----- Custom shorcut -----

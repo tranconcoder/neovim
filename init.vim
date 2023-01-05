@@ -11,7 +11,6 @@ set nowrap
 " 	Case insensitive
 set ignorecase
 set smartcase
-" 	Ignore error message on open file
 
 " 	Set path to nodejs
 let g:coc_node_path = trim(system('which node'))
@@ -68,8 +67,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 	" 	Color picker
 	Plug 'KabbAmine/vCoolor.vim'
-
-	" 	Typescript highlight
 call plug#end()
 
 " 	Set colorscheme
