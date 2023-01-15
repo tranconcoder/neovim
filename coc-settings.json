@@ -1,32 +1,68 @@
 {
-  "languageserver": {
-    "go": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "trace.server": "verbose",
-      "filetypes": ["go"]
-    },
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
-      "initializationOptions": {
-        "cache": {
-          "directory": "/tmp/ccls"
-        }
-      }
-    }
-  },
-  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd",
-  "coc.preferences.formatOnSaveFiletypes": ["html"],
-  "colors.enable": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "js",
-    "ts",
-    "tsx",
-    "jsx",
-    "json",
+	"languageserver": {
+		"go": {
+			"command": "gopls",
+			"rootPatterns": ["go.mod"],
+			"trace.server": "verbose",
+			"filetypes": ["go"]
+		},
+		"ccls": {
+			"command": "ccls",
+			"filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+			"rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+			"initializationOptions": {
+				"cache": {
+					"directory": "/tmp/ccls"
+				}
+			}
+		}
+	},
+	"clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd",
+	"coc.preferences.formatOnSaveFiletypes": ["html"],
+	"colors.enable": true,
+	"coc.preferences.formatOnSaveFiletypes": [
+		"js",
+		"ts",
+		"tsx",
+		"jsx",
+		"json",
+		"css",
+		"scss"
+	],
+  "diagnostic.checkCurrentLine": true,
+  "cSpell.enabledLanguageIds": [
+    "asciidoc",
+    "c",
+    "csharp",
     "css",
-    "scss"
+    "git-commit",
+    "gitcommit",
+    "go",
+    "handlebars",
+    "haskell",
+    "html",
+    "jade",
+    "java",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "latex",
+    "less",
+    "markdown",
+    "php",
+    "plaintext",
+    "pug",
+    "python",
+    "restructuredtext",
+    "rust",
+    "scala",
+    "scss",
+    "text",
+    "typescript",
+    "typescriptreact",
+    "vim",
+    "yaml",
+    "yml"
   ]
 }

@@ -1,6 +1,6 @@
 let g:floaterm_title = 'terminal'
-let g:floaterm_width = 70
-let g:floaterm_height = 12
+let g:floaterm_width = 0.6
+let g:floaterm_height = 0.6
 let g:floaterm_position = 'bottomright'
 
 nnoremap <silent> <leader>t :FloatermToggle<CR>
