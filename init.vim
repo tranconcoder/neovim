@@ -79,3 +79,4 @@ endfor
 for source_file in split(glob('~/.config/nvim/sources/*.vim'))
 	execute 'source' source_file
 endfor
+
