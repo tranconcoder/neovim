@@ -1,8 +1,8 @@
 "	Nerd tree plugin
-map <silent><F2> :NERDTreeToggle<CR>
+nnoremap <silent> <expr> <F2> g:NERDTree.IsOpen() ? "\:NERDTreeToggle<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
 
 " 	Toggle Funzzy finder window
-nnoremap <C-p> :Files <CR>
+nnoremap <C-p> :GFiles <CR>
 
 " 	Search text in all file
 noremap <leader>s :Ag <CR>
