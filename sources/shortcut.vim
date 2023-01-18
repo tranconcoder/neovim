@@ -29,3 +29,6 @@ nnoremap <C-w> :bd <CR>
 " 	Move line up and donw
 nnoremap m :m+ <CR>
 nnoremap n :m-2 <CR>
+
+" 	Open buffers menu
+nnoremap <Tab> :Buffers <CR>
