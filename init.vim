@@ -61,6 +61,7 @@ call plug#begin('~/.config/nvim/plugged')
 	" Fuzzy finder
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
+	Plug 'duane9/nvim-rg'
 
 	" 	Prettier
 	Plug 'prettier/vim-prettier', { 'do': 'npm install --frozen-lockfile --production' }
