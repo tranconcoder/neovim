@@ -4,8 +4,8 @@ set tabstop=4
 set shiftwidth=4
 set number
 set ignorecase
-set showtabline=10
 set termguicolors
+set showtabline=10
 set noswapfile
 set nowrap
 " 	Case insensitive
