@@ -59,7 +59,6 @@ call plug#begin('~/.config/nvim/plugged')
 	" Fuzzy finder
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
-	Plug 'duane9/nvim-rg'
 
 	" 	Prettier
 	Plug 'prettier/vim-prettier', { 'do': 'npm install --frozen-lockfile --production' }
@@ -68,7 +67,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'KabbAmine/vCoolor.vim'
 call plug#end()
 
-colorscheme shades_of_purple
+colorscheme dracula
 
 for source_file in split(glob('~/.config/nvim/command/*.command.vim'))
 	execute 'source' source_file
