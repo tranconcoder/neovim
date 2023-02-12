@@ -14,6 +14,9 @@ set smartcase
 			
 syntax enable
 
+" 	Enable transparent background
+let g:transparent_enabled = v:true
+
 " 	Set path to nodejs
 let g:coc_node_path = trim(system('which node'))
 
@@ -33,6 +36,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'gertjanreynaert/cobalt2-vim-theme'
 	Plug 'nyoom-engineering/oxocarbon'
 	Plug 'Rigellute/shades-of-purple.vim'
+	Plug 'xiyaowong/nvim-transparent'
 
 	"	NerdTree
 	Plug 'preservim/nerdtree'
