@@ -49,6 +49,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 	"	VimCOC and Emmet (suggest code)
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	" 	Generate Lorem paragraph
+	Plug 'derektata/lorem.nvim'
 
 	" 	Airline status bar
 	Plug 'vim-airline/vim-airline'
@@ -65,11 +67,20 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'junegunn/fzf.vim'
 
 	" 	Prettier
-	Plug 'prettier/vim-prettier', { 'do': 'npm install --frozen-lockfile --production' }
+	Plug 'prettier/vim-prettier', { 
+	  \ 'do': 'npm install --frozen-lockfile --production',
+      \ 'for': ['javascript', 'typescript', 'typescriptreact', 'javascriptreact', 'java', 'html'] }
 
 	" 	Color picker
 	Plug 'KabbAmine/vCoolor.vim'
+
+	" Toggle comment code 
+	Plug 'numToStr/Comment.nvim'
+
 call plug#end()
+
+" Set up for toggle comment code
+lua require('Comment').setup()
 
 colorscheme dracula
 
@@ -83,5 +94,4 @@ endfor
 
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
-  endif
-  
+  endif  
