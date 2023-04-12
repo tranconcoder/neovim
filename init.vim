@@ -49,8 +49,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 	"	VimCOC and Emmet (suggest code)
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 	" 	Generate Lorem paragraph
-	Plug 'derektata/lorem.nvim'
 
 	" 	Airline status bar
 	Plug 'vim-airline/vim-airline'
@@ -75,7 +75,6 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'KabbAmine/vCoolor.vim'
 
 	" Toggle comment code 
-	Plug 'numToStr/Comment.nvim'
 
 call plug#end()
 
