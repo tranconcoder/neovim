@@ -78,9 +78,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 call plug#end()
 
-" Set up for toggle comment code
-lua require('Comment').setup()
-
 colorscheme dracula
 
 for source_file in split(glob('~/.config/nvim/command/*.command.vim'))
