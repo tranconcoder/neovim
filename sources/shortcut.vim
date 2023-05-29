@@ -1,4 +1,7 @@
-"	Nerd tree plugin
+" 	Auto compile and excute java file
+nnoremap <leader>j<cmd>javac % && java %<CR>
+
+" 	Nerd tree plugin
 nnoremap <silent> <expr> <F2> g:NERDTree.IsOpen() ? "\:NERDTreeToggle<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
 
 " 	Toggle Funzzy finder window
@@ -8,7 +11,7 @@ nnoremap <C-p> :GFiles <CR>
 noremap <leader>s :Ag <CR>
 noremap <leader>f :Rg <CR>
 
-noremap <silent> <C-s> :w! <bar> silent PrettierAsync <CR>
+noremap <silent> <C-s> :w! <bar> silent Prettier <CR>
 noremap <silent> <F5> :w! <bar> source ~/.config/nvim/init.vim <CR>
 
 " ----- Custom shorcut -----
@@ -24,7 +27,7 @@ nnoremap <M-l> <C-w>l
 nnoremap <M-h> <C-w>h
 
 " Close Tab
-nnoremap <C-w> :bd <CR>
+nnoremap <C-w> :bd! <CR>
 
 " 	Move line up and donw
 nnoremap m :m+ <CR>

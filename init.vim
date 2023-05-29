@@ -8,9 +8,10 @@ set termguicolors
 set showtabline=10
 set noswapfile
 set nowrap
-" 	Case insensitive
 set ignorecase
 set smartcase
+set cursorline
+set relativenumber
 			
 syntax enable
 
@@ -67,9 +68,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'junegunn/fzf.vim'
 
 	" 	Prettier
-	Plug 'prettier/vim-prettier', { 
-	  \ 'do': 'npm install --frozen-lockfile --production',
-      \ 'for': ['javascript', 'typescript', 'typescriptreact', 'javascriptreact', 'java', 'html'] }
+	Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 
 	" 	Color picker
 	Plug 'KabbAmine/vCoolor.vim'
@@ -91,3 +90,7 @@ endfor
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
   endif  
+
+autocmd FileType php let b:prettier_ft_default_args = {
+\ 'parser': 'php',
+\ }
