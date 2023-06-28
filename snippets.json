@@ -1,0 +1,7 @@
+{
+  "div-class": {
+    "prefix": "aaaS1",
+    "body": ["<div className={cx(\"$1\")}></div>"],
+    "description": "Create a div element with className prop"
+  }
+}

@@ -5,7 +5,7 @@ nnoremap <leader>j<cmd>javac % && java %<CR>
 nnoremap <silent> <expr> <F2> g:NERDTree.IsOpen() ? "\:NERDTreeToggle<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
 
 " 	Toggle Funzzy finder window
-nnoremap <C-p> :GFiles <CR>
+nnoremap <C-p> :Files <CR>
 
 " 	Search text in all file
 noremap <leader>s :Ag <CR>
