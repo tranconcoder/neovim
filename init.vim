@@ -84,7 +84,7 @@ call plug#end()
 colorscheme onedark
 
 " Setup to use font ligatures
-set guifont=FiraCode\ NFM
+set guifont=Fira\ Code\ NFM
 syntax match Conceal /\(\%uE0A0\|\%uE0A1\|\%uE0A2\|\%uE0A3\|\%uE0A4\|\%uE0A5\|\%uE0A6\|\%uE0A7\|\%uE0A8\|\%uE0A9\|\%uE0AA\|\%uE0AB\|\%uE0AC\|\%uE0AD\|\%uE0AE\|\%uE0AF\|\%uE0B0\|\%uE0B1\|\%uE0B2\|\%uE0B3\|\%uE0B4\|\%uE0B5\|\%uE0B6\|\%uE0B7\|\%uE0B8\|\%uE0B9\|\%uE0BA\|\%uE0BB\|\%uE0BC\|\%uE0BD\|\%uE0BE\|\%uE0BF\)/ conceal cchar=
 
 for source_file in split(glob('~/.config/nvim/command/*.command.vim'))
