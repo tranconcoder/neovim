@@ -19,7 +19,7 @@ set smartindent
 syntax enable
 
 " 	Enable transparent background
-let g:transparent_enabled = v:false
+let g:transparent_enabled = v:true
 
 " 	Set path to nodejs
 let g:coc_node_path = trim(system('which node'))
@@ -29,6 +29,10 @@ let g:Hexokinase_highlighters = ['backgroundfull']
 
 " 	Show hidden file
 let NERDTreeShowHidden=1
+
+let g:LanguageClient_serverCommands = {
+    \ 'sql': ['sql-language-server', 'up', '--method', 'stdio'],
+    \ }
 
 call plug#begin('~/.config/nvim/plugged')
 	" 	Theme
@@ -41,10 +45,6 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'nyoom-engineering/oxocarbon'
 	Plug 'Rigellute/shades-of-purple.vim'
 	Plug 'xiyaowong/nvim-transparent'
-
-    " Style for code
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
 
     "	NerdTree
 	Plug 'preservim/nerdtree'
