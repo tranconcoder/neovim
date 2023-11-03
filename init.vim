@@ -15,6 +15,7 @@ set cursorline
 set relativenumber
 set autoindent
 set smartindent
+set guifont=CaskaydiaCoveNerdFont
 
 syntax enable
 
