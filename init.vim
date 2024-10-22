@@ -80,6 +80,9 @@ call plug#begin('~/.config/nvim/plugged')
 
 	" 	Color picker
 	Plug 'KabbAmine/vCoolor.vim'
+
+    " Markdown language
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 call plug#end()
 
 colorscheme onedark
