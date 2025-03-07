@@ -35,3 +35,5 @@ nnoremap n :m-2 <CR>
 
 " 	Open buffers menu
 nnoremap <Tab> :Buffers <CR>
+
+
