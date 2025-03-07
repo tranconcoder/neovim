@@ -35,8 +35,3 @@ nnoremap n :m-2 <CR>
 
 " 	Open buffers menu
 nnoremap <Tab> :Buffers <CR>
-
-" example
-nmap <C-s> :w <CR>
-nmap <M-s> <Plug>MarkdownPreviewStop
-nmap <C-p> <Plug>MarkdownPreviewToggle

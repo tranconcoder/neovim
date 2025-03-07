@@ -19,7 +19,7 @@ set guifont=CaskaydiaCoveNerdFont
 
 syntax enable
 
-" 	Enable transparent background
+# Enable transparent background
 let g:transparent_enabled = v:true
 
 " 	Set path to nodejs
@@ -58,6 +58,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 	"	VimCOC and Emmet (suggest code)
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'fangjunzhou/comment-divider.nvim'
 
 	" 	Generate Lorem paragraph
 
@@ -81,9 +82,11 @@ call plug#begin('~/.config/nvim/plugged')
 	" 	Color picker
 	Plug 'KabbAmine/vCoolor.vim'
 
-    " Markdown language
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+    "  Comment
+    Plug 'numToStr/Comment.nvim'
 call plug#end()
+
+lua require('Comment').setup()
 
 colorscheme onedark
 
