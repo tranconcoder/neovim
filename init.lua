@@ -18,6 +18,10 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.guifont = "CaskaydiaCove Nerd Font 18"
 -- vim.opt.guifont = "DroidSansMono Nerd Font 11"
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.writebackup = false
+
 
 vim.cmd("syntax enable")
 

@@ -24,3 +24,5 @@ vim.api.nvim_set_keymap("", "<F10>", ":ToggleTerm 2<CR>", { noremap = true, sile
 vim.api.nvim_set_keymap("n", "<F12>", ":ToggleTermToggleAll<CR>", { noremap = true, silent = true })
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>:silent! tabdo windo if &buftype == "terminal" | hide | endif<CR>', { noremap = true, silent = true })
+
+
