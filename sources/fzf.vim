@@ -1,5 +1,5 @@
 " - Popup window (center of the screen)
-let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.9 } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 
 "   - Preview window on the right with 50% width
 "   - CTRL-/ will toggle preview window.

@@ -1,11 +1,6 @@
 " 	Auto compile and excute java file
 nnoremap <leader>j<cmd>javac % && java %<CR>
 
-" 	Nerd tree plugin
-" nnoremap <silent> <expr> <F2> g:NERDTree.IsOpen() ? "\:NERDTreeToggle<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
-" nnoremap <silent> <expr> <F2> :NvimTreeFindFileToggle <CR>"
-
-
 " 	Toggle Funzzy finder window
 nnoremap <C-p> :Files <CR>
 

@@ -94,12 +94,6 @@ require('Comment').setup(
 
 require('onedark').load()
 
-
--- Load additional Vim scripts
-for _, source_file in ipairs(vim.fn.split(vim.fn.glob('~/.config/nvim/command/*.command.vim'))) do
-    vim.cmd('source ' .. source_file)
-end
-
 for _, source_file in ipairs(vim.fn.split(vim.fn.glob('~/.config/nvim/sources/*.vim'))) do
     vim.cmd('source ' .. source_file)
 end
