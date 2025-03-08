@@ -16,24 +16,16 @@ vim.opt.cursorline = true
 vim.opt.relativenumber = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
-vim.opt.guifont = "CaskaydiaCove Nerd Font"
+vim.opt.guifont = "CaskaydiaCove Nerd Font 18"
 -- vim.opt.guifont = "DroidSansMono Nerd Font 11"
 
 vim.cmd("syntax enable")
-
--- Enable transparent background
-vim.g.transparent_enabled = true
-
-vim.g.airline_powerline_fonts = 1
 
 -- Set path to nodejs
 vim.g.coc_node_path = vim.fn.trim(vim.fn.system('which node'))
 
 -- Configuration hexokinase
 vim.g.Hexokinase_highlighters = { 'backgroundfull' }
-
--- Show hidden file
-vim.g.NERDTreeShowHidden = 1
 
 vim.g.LanguageClient_serverCommands = {
     sql = { 'sql-language-server', 'up', '--method', 'stdio' },
@@ -47,6 +39,8 @@ require('packer').startup(function()
     use { 'dracula/vim', as = 'dracula' }
     use { 'catppuccin/nvim', as = 'catppuccin' }
     use 'navarasu/onedark.nvim'
+    use { "catppuccin/nvim", as = "catppuccin" }
+    use 'xiyaowong/transparent.nvim'
 
     use 'styled-components/vim-styled-components'
     use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
@@ -57,16 +51,14 @@ require('packer').startup(function()
     use 'nvim-tree/nvim-tree.lua'
     use { 'neoclide/coc.nvim', branch = 'release' }
     use 'fangjunzhou/comment-divider.nvim'
-    use 'vim-airline/vim-airline'
-    use 'vim-airline/vim-airline-themes'
     use 'jiangmiao/auto-pairs'
     use 'voldikss/vim-floaterm'
     use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
     use 'junegunn/fzf.vim'
     use { 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' }
     use 'KabbAmine/vCoolor.vim'
-    use 'ryanoasis/vim-devicons'
 
+    use 'nvim-tree/nvim-web-devicons'
     use {
       'nvim-tree/nvim-tree.lua',
       requires = {
@@ -81,18 +73,18 @@ require('packer').startup(function()
             require('Comment').setup()
         end
     }
+
+    --[[ Barbar ]]
+    use 'lewis6991/gitsigns.nvim'
+    use 'romgrk/barbar.nvim'
+
+    --[[ Lualine ]]
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 end)
 
-require('Comment').setup(
-    {
-        toggler = {
-            line = '<C-_>',
-            block = '<C-_>',
-        },
-    }
-)
-
-require('onedark').load()
 
 for _, source_file in ipairs(vim.fn.split(vim.fn.glob('~/.config/nvim/sources/*.vim'))) do
     vim.cmd('source ' .. source_file)
@@ -100,10 +92,6 @@ end
 
 for _, source_file in ipairs(vim.fn.split(vim.fn.glob('~/.config/nvim/sources/*.lua'))) do
     vim.cmd('source ' .. source_file)
-end
-
-if not vim.g.airline_symbols then
-    vim.g.airline_symbols = {}
 end
 
 vim.g.loaded_netrw = 1
