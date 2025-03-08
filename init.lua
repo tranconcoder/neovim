@@ -40,24 +40,30 @@ require('packer').startup(function()
     use { 'catppuccin/nvim', as = 'catppuccin' }
     use 'navarasu/onedark.nvim'
     use { "catppuccin/nvim", as = "catppuccin" }
+    use 'Rigellute/shades-of-purple.vim'
     use 'xiyaowong/transparent.nvim'
+
+    --[[ Toggle term ]]
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+      require("toggleterm").setup()
+    end}
 
     use 'styled-components/vim-styled-components'
     use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
     use 'gertjanreynaert/cobalt2-vim-theme'
     use 'nyoom-engineering/oxocarbon'
-    use 'Rigellute/shades-of-purple.vim'
     use 'xiyaowong/nvim-transparent'
-    use 'nvim-tree/nvim-tree.lua'
     use { 'neoclide/coc.nvim', branch = 'release' }
-    use 'fangjunzhou/comment-divider.nvim'
     use 'jiangmiao/auto-pairs'
-    use 'voldikss/vim-floaterm'
     use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
     use 'junegunn/fzf.vim'
     use { 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' }
     use 'KabbAmine/vCoolor.vim'
 
+    --[[ Comment ]]
+    use 'fangjunzhou/comment-divider.nvim'
+
+    --[[ Nvim tree ]]
     use 'nvim-tree/nvim-web-devicons'
     use {
       'nvim-tree/nvim-tree.lua',
