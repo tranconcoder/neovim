@@ -73,12 +73,7 @@ require('packer').startup(function()
     }
     use 'DaikyXendo/nvim-material-icon'
 
-    use {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
-    }
+    use 'numToStr/Comment.nvim'
 
     --[[ Barbar ]]
     use 'lewis6991/gitsigns.nvim'
