@@ -22,18 +22,10 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.writebackup = false
 
-
 vim.cmd("syntax enable")
 
 -- Set path to nodejs
 vim.g.coc_node_path = vim.fn.trim(vim.fn.system('which node'))
-
--- Configuration hexokinase
-vim.g.Hexokinase_highlighters = { 'backgroundfull' }
-
-vim.g.LanguageClient_serverCommands = {
-    sql = { 'sql-language-server', 'up', '--method', 'stdio' },
-}
 
 -- Plugin setup
 vim.cmd [[packadd packer.nvim]]
@@ -69,27 +61,25 @@ require('packer').startup(function()
 
     --[[ Nvim tree ]]
     use 'nvim-tree/nvim-web-devicons'
-    use {
-      'nvim-tree/nvim-tree.lua',
-      requires = {
-        'nvim-tree/nvim-web-devicons', -- optional
-      },
-    }
+    use 'nvim-tree/nvim-tree.lua'
     use 'DaikyXendo/nvim-material-icon'
 
     use 'numToStr/Comment.nvim'
 
-    --[[ Barbar ]]
-    use 'lewis6991/gitsigns.nvim'
-    use 'romgrk/barbar.nvim'
 
     --[[ Lualine ]]
     use {
       'nvim-lualine/lualine.nvim',
       requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
-end)
 
+    --[[ Barbar ]]
+    --[[ use 'lewis6991/gitsigns.nvim'
+    use 'romgrk/barbar.nvim' ]]
+
+
+    use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+end)
 
 for _, source_file in ipairs(vim.fn.split(vim.fn.glob('~/.config/nvim/sources/*.vim'))) do
     vim.cmd('source ' .. source_file)

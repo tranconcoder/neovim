@@ -1,2 +1,0 @@
-# Install golang
-# go to root folder of plugin and run (make hexokinase)
