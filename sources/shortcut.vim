@@ -36,4 +36,6 @@ nnoremap n :m-2 <CR>
 " 	Open buffers menu
 nnoremap <Tab> :Buffers <CR>
 
-
+"   Comment devider
+nnoremap f :CommentDividerLine <CR>
+nnoremap <C-f> :CommentDividerBox <CR>

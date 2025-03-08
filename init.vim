@@ -19,7 +19,7 @@ set guifont=CaskaydiaCoveNerdFont
 
 syntax enable
 
-# Enable transparent background
+" Enable transparent background
 let g:transparent_enabled = v:true
 
 " 	Set path to nodejs
