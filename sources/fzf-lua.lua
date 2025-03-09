@@ -3,6 +3,9 @@ require('fzf-lua').setup{
         height           = 0.8,            -- window height
         width            = 0.8,            -- window width
         border           = "rounded",
+    },
+    files = {
+        find_opts = [[-type f -not -path '*/.git/*' -not -path '*/node_modules/*']]
     }
 }
 
