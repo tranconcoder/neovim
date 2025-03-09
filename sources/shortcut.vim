@@ -2,7 +2,7 @@
 nnoremap <leader>j<cmd>javac % && java %<CR>
 
 " 	Toggle Funzzy finder window
-nnoremap <C-p> :Files <CR>
+" nnoremap <C-p> :Files <CR>
 
 " 	Search text in all file
 noremap <leader>s :Ag <CR>

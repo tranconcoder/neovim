@@ -18,9 +18,14 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.guifont = "CaskaydiaCove Nerd Font 18"
 -- vim.opt.guifont = "DroidSansMono Nerd Font 11"
+-- Backup
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.writebackup = false
+-- Fold
+--[[ vim.opt.foldmethod = "indent"
+vim.opt.foldlevel = 1
+vim.opt.foldclose = "all" ]]
 
 vim.cmd("syntax enable")
 
@@ -51,10 +56,11 @@ require('packer').startup(function()
     use 'xiyaowong/nvim-transparent'
     use { 'neoclide/coc.nvim', branch = 'release' }
     use 'jiangmiao/auto-pairs'
-    use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
-    use 'junegunn/fzf.vim'
     use { 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' }
     use 'KabbAmine/vCoolor.vim'
+
+    --[[ use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
+    use 'junegunn/fzf.vim' ]]
 
     --[[ Comment ]]
     use 'fangjunzhou/comment-divider.nvim'
@@ -63,7 +69,6 @@ require('packer').startup(function()
     use 'nvim-tree/nvim-web-devicons'
     use 'nvim-tree/nvim-tree.lua'
     use 'DaikyXendo/nvim-material-icon'
-
     use 'numToStr/Comment.nvim'
 
 
@@ -73,12 +78,9 @@ require('packer').startup(function()
       requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 
-    --[[ Barbar ]]
-    --[[ use 'lewis6991/gitsigns.nvim'
-    use 'romgrk/barbar.nvim' ]]
-
-
     use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+
+    use "ibhagwan/fzf-lua"
 end)
 
 for _, source_file in ipairs(vim.fn.split(vim.fn.glob('~/.config/nvim/sources/*.vim'))) do
@@ -91,6 +93,4 @@ end
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
--- optionally enable 24-bit colour
 vim.opt.termguicolors = true
