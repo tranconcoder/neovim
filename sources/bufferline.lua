@@ -2,6 +2,8 @@ require("bufferline").setup{
     options = {
         mode = "buffers",
         separator_style = "slant",
+        max_name_length = 10,
+        tab_size = 0,
         buffer_close_icon = 'x',
         modified_icon = '● ',
         close_icon = ' ',
