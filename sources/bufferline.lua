@@ -14,7 +14,7 @@ require("bufferline").setup{
             right = function()
                 local result = {}
                 local seve = vim.diagnostic.severity
-                local error = #vim.diagnostic.get(0, {severity = seve.ERROR})
+                local error = #vim.diagnostic.get(1, {severity = seve.ERROR})
                 local warning = #vim.diagnostic.get(0, {severity = seve.WARN})
                 local info = #vim.diagnostic.get(0, {severity = seve.INFO})
                 local hint = #vim.diagnostic.get(0, {severity = seve.HINT})

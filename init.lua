@@ -83,14 +83,10 @@ require('packer').startup(function()
     use "ibhagwan/fzf-lua"
 end)
 
-for _, source_file in ipairs(vim.fn.split(vim.fn.glob('~/.config/nvim/sources/*.vim'))) do
-    vim.cmd('source ' .. source_file)
-end
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 for _, source_file in ipairs(vim.fn.split(vim.fn.glob('~/.config/nvim/sources/*.lua'))) do
     vim.cmd('source ' .. source_file)
 end
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-vim.opt.termguicolors = true
