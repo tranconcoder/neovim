@@ -43,6 +43,39 @@ require('packer').startup(function()
     use {
       "ray-x/lsp_signature.nvim",
     }
+    -- Auto stop/start to keeps RAM usage low.
+    use({
+        "hinell/lsp-timeout.nvim",
+        requires={ "neovim/nvim-lspconfig" }
+    })
+    -- Rename variable
+    -- JSON
+    use 'neovim/nvim-lspconfig'
+    use 'tamago324/nlsp-settings.nvim'
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
+
+    -- Show ts error
+    use('dmmulroy/ts-error-translator.nvim')
+
+    -- Highligth syntax
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    }
+
+    use({
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      after = "nvim-treesitter",
+      requires = "nvim-treesitter/nvim-treesitter",
+    })
+
+
+    -- Copilot
+    use { "zbirenbaum/copilot.lua" }
 
     use 'wbthomason/packer.nvim'
     use { 'dracula/vim', as = 'dracula' }
@@ -51,11 +84,28 @@ require('packer').startup(function()
     use 'Rigellute/shades-of-purple.vim'
     use 'xiyaowong/transparent.nvim'
     use "EdenEast/nightfox.nvim"
+    -- use 'marko-cerovac/material.nvim'
+    use 'christianchiarulli/nvcode-color-schemes.vim'
 
     --[[ Toggle term ]]
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()
       require("toggleterm").setup()
     end}
+
+    -- Highligth cursor
+    use 'ya2s/nvim-cursorline'
+
+    -- Startup
+    use {
+      'nvimdev/dashboard-nvim',
+      event = 'VimEnter',
+      config = function()
+        require('dashboard').setup {
+            theme = 'hyper'
+        }
+      end,
+      requires = {'nvim-tree/nvim-web-devicons'}
+    }
 
     use 'styled-components/vim-styled-components'
     use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
@@ -66,6 +116,7 @@ require('packer').startup(function()
     use 'jiangmiao/auto-pairs'
     use { 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' }
     use 'KabbAmine/vCoolor.vim'
+    use "folke/tokyonight.nvim"
 
     --[[ use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
     use 'junegunn/fzf.vim' ]]
@@ -92,6 +143,7 @@ require('packer').startup(function()
 
     use "ibhagwan/fzf-lua"
 end)
+
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
