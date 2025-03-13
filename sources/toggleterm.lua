@@ -1,3 +1,5 @@
+vim.o.ea = false -- Disable resize window on close or open new buffer
+
 require'toggleterm'.setup {
   size = function(term)
     if term.direction == "horizontal" then
@@ -86,7 +88,7 @@ vim.keymap.set("t", "<F9>", function()
         vim.cmd("ToggleTermToggleAll")
         vim.defer_fn(function()
             vim.cmd("set noim")
-        end, 30)
+        end, 100)
     end
 end, { noremap = true, silent = true })
 
@@ -105,6 +107,6 @@ vim.keymap.set("t", "<F10>", function()
         vim.cmd("ToggleTermToggleAll")
         vim.defer_fn(function()
             vim.cmd("set noim")
-        end, 30)
+        end, 50)
     end
 end, { noremap = true, silent = true })

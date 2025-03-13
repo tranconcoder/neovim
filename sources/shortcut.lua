@@ -1,6 +1,3 @@
--- Auto compile and execute Java file
-vim.keymap.set("n", "<leader>j", "<cmd>!javac % && java %<CR>", { noremap = true })
-
 -- Search text in all files
 vim.keymap.set("n", "<leader>s", "<cmd>Ag<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>f", "<cmd>Rg<CR>", { noremap = true })
@@ -27,9 +24,6 @@ vim.keymap.set("n", "<C-w>", "<cmd>bd!<CR>", { noremap = true })
 -- Move line up and down
 vim.keymap.set("n", "m", "<cmd>m+<CR>", { noremap = true })
 vim.keymap.set("n", "n", "<cmd>m-2<CR>", { noremap = true })
-
--- Open buffers menu
-vim.keymap.set("n", "<Tab>", "<cmd>Buffers<CR>", { noremap = true })
 
 -- Comment divider
 vim.keymap.set("n", "f", "<cmd>CommentDividerLine<CR>", { noremap = true })

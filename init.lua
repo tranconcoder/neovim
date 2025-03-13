@@ -19,13 +19,16 @@ vim.opt.smartindent = true
 vim.opt.guifont = "CaskaydiaCove Nerd Font 18"
 -- vim.opt.guifont = "DroidSansMono Nerd Font 11"
 -- Backup
-vim.opt.swapfile = false
+--[[ vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.writebackup = false
+vim.opt.writebackup = false ]]
 -- Fold
 --[[ vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 1
 vim.opt.foldclose = "all" ]]
+
+
+require'lspconfig'.pyright.setup{}
 
 vim.cmd("syntax enable")
 
@@ -36,13 +39,18 @@ vim.g.coc_node_path = vim.fn.trim(vim.fn.system('which node'))
 vim.cmd [[packadd packer.nvim]]
 
 require('packer').startup(function()
+    -- LSP
+    use {
+      "ray-x/lsp_signature.nvim",
+    }
+
     use 'wbthomason/packer.nvim'
     use { 'dracula/vim', as = 'dracula' }
-    use { 'catppuccin/nvim', as = 'catppuccin' }
     use 'navarasu/onedark.nvim'
     use { "catppuccin/nvim", as = "catppuccin" }
     use 'Rigellute/shades-of-purple.vim'
     use 'xiyaowong/transparent.nvim'
+    use "EdenEast/nightfox.nvim"
 
     --[[ Toggle term ]]
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()
@@ -63,7 +71,9 @@ require('packer').startup(function()
     use 'junegunn/fzf.vim' ]]
 
     --[[ Comment ]]
-    use 'fangjunzhou/comment-divider.nvim'
+    use { 'fangjunzhou/comment-divider.nvim', config = {
+        commentLength = 64,
+    } }
 
     --[[ Nvim tree ]]
     use 'nvim-tree/nvim-web-devicons'

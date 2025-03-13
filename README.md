@@ -1,2 +1,1 @@
-# neovim
-# neovim
+# Install neovim/nvim-lspconfig
