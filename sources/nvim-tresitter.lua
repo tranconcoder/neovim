@@ -1,7 +1,19 @@
 
--- vim.opt.foldmethod     = 'expr'
--- vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
+--[[ vim.opt.foldmethod     = 'expr'
+vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
+vim.opt.foldlevel      = 0 ]]
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = true -- Cho phép gập nội dung
+vim.opt.foldlevel = 1     -- Gập các hàm nhưng giữ class mở
+
+-- Khi mở một fold, tự động mở toàn bộ block con bên trong
+vim.api.nvim_set_keymap("n", "zo", "zO", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "zc", "zC", { noremap = true, silent = true })
+
+
 ---WORKAROUND
+vim.opt.foldenable = true
 vim.api.nvim_create_autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
   group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
   callback = function()

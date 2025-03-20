@@ -67,6 +67,19 @@ require('packer').startup(function()
         end,
     }
 
+    -- Show document
+    use {
+      "amrbashir/nvim-docs-view",
+      opt = true,
+      cmd = { "DocsViewToggle" },
+      config = function()
+        require("docs-view").setup {
+          position = "right",
+          width = 60,
+        }
+      end
+    }
+
     use({
       "nvim-treesitter/nvim-treesitter-textobjects",
       after = "nvim-treesitter",
@@ -77,6 +90,8 @@ require('packer').startup(function()
     -- Copilot
     use { "zbirenbaum/copilot.lua" }
 
+    -- Theme
+    use("catgoose/nvim-colorizer.lua")
     use 'wbthomason/packer.nvim'
     use { 'dracula/vim', as = 'dracula' }
     use 'navarasu/onedark.nvim'
@@ -86,6 +101,14 @@ require('packer').startup(function()
     use "EdenEast/nightfox.nvim"
     -- use 'marko-cerovac/material.nvim'
     use 'christianchiarulli/nvcode-color-schemes.vim'
+
+    -- Inc rename
+    use {
+      "smjonas/inc-rename.nvim",
+      config = function()
+        require("inc_rename").setup()
+      end,
+    }
 
     --[[ Toggle term ]]
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()
