@@ -2,8 +2,13 @@
 vim.keymap.set("n", "<leader>s", "<cmd>Ag<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>f", "<cmd>Rg<CR>", { noremap = true })
 
+--[[ vim.api.nvim_set_keymap("n", "zo", "zO", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "zc", "zC", { noremap = true, silent = true }) ]]
+
 -- Save file and format with Prettier
-vim.keymap.set("n", "<C-s>", "<cmd>w! | silent Prettier<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<C-s>", "<cmd>w! | silent Prettier<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-s>", "<cmd>w!<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-space>", "<cmd>w! | silent Prettier<CR>", { noremap = true, silent = true })
 
 -- Reload Neovim config
 vim.keymap.set("n", "<F5>", "<cmd>w! | source ~/.config/nvim/init.lua<CR>", { noremap = true, silent = true })

@@ -19,9 +19,9 @@ vim.opt.smartindent = true
 vim.opt.guifont = "CaskaydiaCove Nerd Font 18"
 -- vim.opt.guifont = "DroidSansMono Nerd Font 11"
 -- Backup
--- vim.opt.swapfile = true
--- vim.opt.backup = true
--- vim.opt.writebackup = true
+vim.opt.swapfile = true
+vim.opt.backup = true
+vim.opt.writebackup = true
 -- Fold
 --[[ vim.opt.foldenable = true
 vim.opt.foldmethod = "manual"
