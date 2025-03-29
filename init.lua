@@ -107,7 +107,7 @@ require('packer').startup(function()
     use 'ya2s/nvim-cursorline'
 
     -- Startup
-    --[[ use {
+    use {
       'nvimdev/dashboard-nvim',
       event = 'VimEnter',
       config = function()
@@ -116,7 +116,7 @@ require('packer').startup(function()
         }
       end,
       requires = {'nvim-tree/nvim-web-devicons'}
-    } ]]
+    }
 
     -- use 'styled-components/vim-styled-components'
     use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
