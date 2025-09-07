@@ -27,7 +27,7 @@ local common_setup_opts = {
 
 mason.setup()
 mason_lspconfig.setup()
-mason_lspconfig.setup_handlers({
+--[[ mason_lspconfig.setup_handlers({
   function (server_name)
     local opts = vim.deepcopy(common_setup_opts)
     if server_opts[server_name] then
@@ -35,4 +35,4 @@ mason_lspconfig.setup_handlers({
     end
     lspconfig[server_name].setup(opts)
   end
-})
+}) ]]

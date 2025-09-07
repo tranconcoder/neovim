@@ -17,6 +17,9 @@ vim.opt.relativenumber = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.guifont = "CaskaydiaCove Nerd Font 18"
+
+if vim.uv == nil then vim.uv = vim.loop end
+
 -- vim.opt.guifont = "DroidSansMono Nerd Font 11"
 -- Backup
 -- vim.opt.swapfile = true
@@ -28,8 +31,7 @@ vim.opt.foldmethod = "manual"
 vim.opt.foldlevel = 1
 vim.opt.foldclose = "all" ]]
 
-
-require'lspconfig'.pyright.setup{}
+require('lspconfig').pyright.setup {}
 
 vim.cmd("syntax enable")
 

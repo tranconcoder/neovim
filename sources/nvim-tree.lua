@@ -16,7 +16,27 @@ require("nvim-tree").setup({
 
 -- Gán phím F2 để toggle NvimTree
 -- vim.api.nvim_set_keymap('n', '<F2>', ':NvimTreeToggle name=desktop<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-b>', ':lua require("nvim-tree.api").tree.toggle({ path = vim.fn.getcwd() })<CR>', { noremap = true, silent = true })
+
+-- vim.api.nvim_set_keymap('n', '<C-b>', ':lua require("nvim-tree.api").tree.toggle({ path = vim.fn.getcwd() })<CR>', { noremap = true, silent = true })
+
+
+-- vim.api.nvim_set_keymap('n', '<C-b>', ':lua require("nvim-tree.api").tree.toggle({ path = vim.fn.getcwd() })<CR>', { noremap = true, silent = true })
+
+--[[ vim.keymap.set('n', '<C-b>', function()
+  require("nvim-tree.api").tree.find_file({ open = true })
+end, { noremap = true, silent = true }) ]]
+
+vim.keymap.set('n', '<C-b>', function()
+  local api = require("nvim-tree.api")
+  if api.tree.is_visible() then
+    api.tree.close()
+  else
+    api.tree.find_file({ open = true })
+  end
+end, { noremap = true, silent = true })
+
+
+
 
 -- Khi mở Neovim với một đối số là thư mục (ví dụ: nvim .), tự động chuyển đến thư mục đó và mở NvimTree
 vim.api.nvim_create_autocmd("VimEnter", {
