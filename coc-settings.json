@@ -110,5 +110,6 @@
         "civ.my-class": "<div className={cx(\"my-class\")}>$0</div>"
       }
     }
-  }
+  },
+  "snippets.ultisnips.pythonPrompt": false
 }

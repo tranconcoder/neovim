@@ -1,6 +1,6 @@
  -- Optional, you don't have to run setup.
 -- Enable transparent background
-vim.g.transparent_enabled = false
+vim.g.transparent_enabled = true
 
 require("transparent").setup({
   -- table: default groups
@@ -19,3 +19,4 @@ require("transparent").setup({
   -- Also the user event "TransparentClear" will be triggered
   on_clear = function() end,
 })
+
