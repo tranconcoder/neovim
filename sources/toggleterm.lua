@@ -3,9 +3,9 @@ vim.o.ea = false -- Disable resize window on close or open new buffer
 require'toggleterm'.setup {
   size = function(term)
     if term.direction == "horizontal" then
-      return 5
+      return 10
     elseif term.direction == "vertical" then
-      return vim.o.columns * 0.3
+      return vim.o.columns * 0.5
     end
   end,
   direction = "horizontal",
@@ -34,7 +34,7 @@ vim.keymap.set("t", "<Esc>", function()
     local buf_type = vim.api.nvim_buf_get_option(buf, "buftype")
 
     -- Nếu cửa sổ này không phải terminal, chuyển focus vào nó
-    if buf_type ~= "terminal" then
+    if buf_type ~= "terminal" and buf_type ~= "nofile" then
       vim.api.nvim_set_current_win(win)
       return
     end

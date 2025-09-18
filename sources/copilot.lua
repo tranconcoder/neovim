@@ -16,11 +16,11 @@ require('copilot').setup({
   },
   suggestion = {
     enabled = true,
-    auto_trigger = false,
+    auto_trigger = true,
     hide_during_completion = true,
     debounce = 75,
     keymap = {
-      accept = "<M-l>",
+      accept = "<Tab>",
       accept_word = false,
       accept_line = false,
       next = "<M-]>",
@@ -30,7 +30,7 @@ require('copilot').setup({
   },
   filetypes = {
     yaml = false,
-    markdown = false,
+    markdown = true,
     help = false,
     gitcommit = false,
     gitrebase = false,

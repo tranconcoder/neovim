@@ -6,6 +6,7 @@ vim.opt.termguicolors = true
 
 -- Cấu hình nvim-tree để luôn cập nhật thư mục làm việc hiện tại
 require("nvim-tree").setup({
+  reload_on_bufenter = true,
   update_cwd = true,
   update_focused_file = {
     enable = true,
@@ -31,7 +32,7 @@ vim.keymap.set('n', '<C-b>', function()
   if api.tree.is_visible() then
     api.tree.close()
   else
-    api.tree.find_file({ open = true })
+    api.tree.find_file({ open = true, focus = true })
   end
 end, { noremap = true, silent = true })
 
@@ -57,7 +58,7 @@ require("nvim-tree").setup({
     sorter = "case_sensitive",
   },
   view = {
-    width = 30,
+    width = 40,
   },
   renderer = {
     group_empty = true,
