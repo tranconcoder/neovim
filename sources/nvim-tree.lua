@@ -63,6 +63,13 @@ require("nvim-tree").setup({
   },
   renderer = {
     group_empty = true,
+
+    add_trailing = false, -- Thêm dấu gạch chéo vào cuối tên thư mục
+
+    highlight_opened_files = "all", -- Highlight các file đang mở
+
+    highlight_git = true,     -- Tô màu file theo trạng thái Git
+
     indent_markers = {
       enable = true,          -- Bật hiển thị đường kẻ dọc
       inline_arrows = true,   -- Hiển thị mũi tên inline
