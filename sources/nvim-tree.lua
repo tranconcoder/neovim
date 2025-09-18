@@ -29,6 +29,7 @@ end, { noremap = true, silent = true }) ]]
 
 vim.keymap.set('n', '<C-b>', function()
   local api = require("nvim-tree.api")
+
   if api.tree.is_visible() then
     api.tree.close()
   else
@@ -62,6 +63,17 @@ require("nvim-tree").setup({
   },
   renderer = {
     group_empty = true,
+    indent_markers = {
+      enable = true,          -- Bật hiển thị đường kẻ dọc
+      inline_arrows = true,   -- Hiển thị mũi tên inline
+      icons = {
+        corner = "└",
+        edge = "│",
+        item = "│",
+        bottom = "─",
+        none = " ",
+      },
+    },
   },
   filters = {
     dotfiles = false,
