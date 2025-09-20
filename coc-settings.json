@@ -111,5 +111,7 @@
       }
     }
   },
-  "snippets.ultisnips.pythonPrompt": false
+  "snippets.ultisnips.pythonPrompt": false,
+  "tsserver.preferences.importModuleSpecifierPreference": "relative",
+  "tsserver.preferences.importModuleSpecifierEnding": "minimal"
 }

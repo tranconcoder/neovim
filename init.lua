@@ -70,6 +70,9 @@ require('packer').startup(function()
       end
     } ]]
 
+
+    use { "lukas-reineke/indent-blankline.nvim" }
+
     use({
       "nvim-treesitter/nvim-treesitter-textobjects",
       after = "nvim-treesitter",
