@@ -56,8 +56,6 @@
     }
   },
   "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/16.0.2/clangd_16.0.2/bin/clangd",
-  "coc.preferences.formatOnSaveFiletypes": ["html"],
-  "colors.enable": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "js",
     "ts",
@@ -66,8 +64,10 @@
     "json",
     "css",
     "scss",
-    "php"
+    "php",
+    "html"
   ],
+  "colors.enable": true,
   "diagnostic.checkCurrentLine": true,
   "cSpell.enabledLanguageIds": [
     "asciidoc",
@@ -112,6 +112,25 @@
     }
   },
   "snippets.ultisnips.pythonPrompt": false,
-  "tsserver.preferences.importModuleSpecifierPreference": "relative",
-  "tsserver.preferences.importModuleSpecifierEnding": "minimal"
+
+  "tsserver.preferences.importModuleSpecifier": "relative",
+  "tsserver.preferences.importModuleSpecifierEnding": "minimal",
+  "tsserver.implicitProjectConfig.checkJs": false,
+  "tsserver.implicitProjectConfig.experimentalDecorators": true,
+
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifierEnding": "minimal",
+  "typescript.preferences.useAliasesForRenames": false,
+  "typescript.suggest.autoImports": true,
+  "typescript.suggest.enabled": true,
+  "typescript.suggest.paths": true,
+
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "javascript.preferences.importModuleSpecifierEnding": "minimal",
+  "javascript.suggest.autoImports": true,
+  "javascript.suggest.enabled": true,
+
+  "suggest.autoTrigger": "always",
+  "suggest.enablePreview": true,
+  "suggest.triggerAfterInsertEnter": true
 }

@@ -106,3 +106,31 @@ require'nvim-web-devicons'.setup {
   -- will get overriden by `get_icons` option
   default = true;
 }
+
+
+-- Method 1: Simple auto-reveal on buffer enter
+-- Add this to your init.lua or a separate config file
+
+-- Auto-find file in nvim-tree when opening a buffer
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = vim.api.nvim_create_augroup("NvimTreeAutoFind", { clear = true }),
+  callback = function()
+    -- Only proceed if nvim-tree is available and the buffer is a file
+    local ok, nvim_tree_api = pcall(require, "nvim-tree.api")
+    if not ok then return end
+    
+    local bufname = vim.api.nvim_buf_get_name(0)
+    
+    -- Check if buffer is a real file (not empty, not a special buffer)
+    if bufname == "" or 
+       vim.bo.buftype ~= "" or 
+       vim.bo.filetype == "NvimTree" then
+      return
+    end
+    
+    -- Check if file exists
+    if vim.fn.filereadable(bufname) == 1 then
+      nvim_tree_api.tree.find_file({ buf = 0, open = true, focus = false })
+    end
+  end,
+})
