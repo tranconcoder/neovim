@@ -167,4 +167,3 @@ vim.g.loaded_netrwPlugin = 1
 for _, source_file in ipairs(vim.fn.split(vim.fn.glob('~/.config/nvim/sources/*.lua'))) do
     vim.cmd('source ' .. source_file)
 end
-

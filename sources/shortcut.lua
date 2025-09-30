@@ -34,3 +34,5 @@ vim.keymap.set("n", "n", "<cmd>m-2<CR>", { noremap = true })
 vim.keymap.set("n", "f", "<cmd>CommentDividerLine<CR>", { noremap = true })
 vim.keymap.set("n", "<C-f>", "<cmd>CommentDividerBox<CR>", { noremap = true })
 
+-- Đảm bảo Neovim nhận đúng Ctrl+I
+vim.keymap.set('n', '<C-I>', '<C-I>', { noremap = true, desc = 'Jump forward' })
