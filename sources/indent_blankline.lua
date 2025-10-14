@@ -1,4 +1,4 @@
-local full_highlight = true
+local full_highlight = false
 
 if not full_highlight then
     local highlight = {
