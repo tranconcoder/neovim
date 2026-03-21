@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEn
 })
 ---ENDWORKAROUND
 
-require'nvim-treesitter.configs'.setup {
+--[[ require'nvim-treesitter.configs'.setup {
   textobjects = {
     lsp_interop = {
       enable = true,
@@ -37,4 +37,4 @@ require'nvim-treesitter.configs'.setup {
       },
     },
   },
-}
+} ]]

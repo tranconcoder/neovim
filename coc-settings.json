@@ -57,15 +57,11 @@
   },
   "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/16.0.2/clangd_16.0.2/bin/clangd",
   "coc.preferences.formatOnSaveFiletypes": [
-    "js",
-    "ts",
-    "tsx",
-    "jsx",
+    "javascript",
+    "typescript",
     "json",
-    "css",
-    "scss",
-    "php",
-    "html"
+    "graphql",
+    "prisma"
   ],
   "colors.enable": true,
   "diagnostic.checkCurrentLine": true,

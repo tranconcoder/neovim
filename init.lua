@@ -17,7 +17,26 @@ vim.opt.relativenumber = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.guifont = "CaskaydiaCove Nerd Font 18"
-vim.opt.clipboard = 'unnamedplus'
+
+-- 1. Chặn đứng Neovim tự tìm provider (để không bị treo 3s)
+vim.g.loaded_clipboard_provider = 1 
+
+-- 2. Chỉ định dùng cái "Cầu nối" vừa tạo
+vim.g.clipboard = {
+  name = 'WslBridge',
+  copy = {
+    ['+'] = '/home/tvconss/.local/bin/wsl-copy',
+    ['*'] = '/home/tvconss/.local/bin/wsl-copy',
+  },
+  paste = {
+    ['+'] = 'powershell.exe -NoProfile -Command Get-Clipboard',
+    ['*'] = 'powershell.exe -NoProfile -Command Get-Clipboard',
+  },
+  cache_enabled = 0,
+}
+
+-- 3. Kích hoạt (Viết đúng chính tả)
+vim.opt.clipboard = "unnamedplus"
 
 if vim.uv == nil then vim.uv = vim.loop end
 
@@ -72,6 +91,8 @@ require('packer').startup(function()
 
 
     use { "lukas-reineke/indent-blankline.nvim" }
+
+    use "nvim-treesitter/nvim-treesitter"
 
     use({
       "nvim-treesitter/nvim-treesitter-textobjects",
@@ -164,6 +185,11 @@ end)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-for _, source_file in ipairs(vim.fn.split(vim.fn.glob('~/.config/nvim/sources/*.lua'))) do
-    vim.cmd('source ' .. source_file)
-end
+-- Load sources after plugins are ready
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    for _, source_file in ipairs(vim.fn.split(vim.fn.glob('~/.config/nvim/sources/*.lua'))) do
+        vim.cmd('source ' .. source_file)
+    end
+  end
+})
