@@ -18,25 +18,8 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.guifont = "CaskaydiaCove Nerd Font 18"
 
--- 1. Chặn đứng Neovim tự tìm provider (để không bị treo 3s)
-vim.g.loaded_clipboard_provider = 1 
-
--- 2. Chỉ định dùng cái "Cầu nối" vừa tạo
-vim.g.clipboard = {
-  name = 'WslBridge',
-  copy = {
-    ['+'] = '/home/tvconss/.local/bin/wsl-copy',
-    ['*'] = '/home/tvconss/.local/bin/wsl-copy',
-  },
-  paste = {
-    ['+'] = 'powershell.exe -NoProfile -Command Get-Clipboard',
-    ['*'] = 'powershell.exe -NoProfile -Command Get-Clipboard',
-  },
-  cache_enabled = 0,
-}
-
--- 3. Kích hoạt (Viết đúng chính tả)
-vim.opt.clipboard = "unnamedplus"
+-- Clipboard: MUST source early, before Neovim's provider init
+dofile(vim.fn.stdpath('config') .. '/sources/clipboard.lua')
 
 if vim.uv == nil then vim.uv = vim.loop end
 
@@ -185,11 +168,19 @@ end)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- Load sources after plugins are ready
+-- Sources that are loaded early (via dofile above), skip at VimEnter
+local early_sources = {
+    ['clipboard.lua'] = true,
+}
+
+-- Load remaining sources after plugins are ready
 vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
     for _, source_file in ipairs(vim.fn.split(vim.fn.glob('~/.config/nvim/sources/*.lua'))) do
-        vim.cmd('source ' .. source_file)
+        local basename = vim.fn.fnamemodify(source_file, ':t')
+        if not early_sources[basename] then
+            vim.cmd('source ' .. source_file)
+        end
     end
   end
 })

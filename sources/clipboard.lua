@@ -1,28 +1,112 @@
--- 1. Chặn đứng trình quản lý mặc định (Diệt tận gốc lỗi treo 3 giây)
-vim.g.loaded_clipboard_provider = 1
+-- ~/.config/nvim/sources/clipboard.lua
+-- Auto-detect WSL vs native Linux
 
--- 2. Tự động đẩy dữ liệu sang Windows khi bạn nhấn y hoặc d
-vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function()
-        -- Lấy nội dung vừa copy/xóa
-        local content = vim.fn.getreg(vim.v.event.regname)
-        if content ~= "" then
-            -- Dùng hàm hệ thống của Neovim để "pipe" dữ liệu thẳng vào clip.exe
-            -- Neovim sẽ tự lo việc đẩy 'content' vào stdin của clip.exe cho bạn
-            vim.fn.system('/mnt/c/Windows/System32/clip.exe', content)
-        end
-    end,
-})
+local function is_wsl()
+    local f = io.open('/proc/version', 'r')
+    if f then
+        local content = f:read('*a')
+        f:close()
+        return content:lower():find('microsoft') ~= nil
+    end
+    return false
+end
 
--- 3. Cấu hình phím Paste (p) lấy dữ liệu từ Windows về
-vim.keymap.set('n', 'p', function()
-    -- Gọi powershell để lấy clipboard
-    local content = vim.fn.system('powershell.exe -NoProfile -Command Get-Clipboard')
-    -- Dọn dẹp ký tự xuống dòng của Windows (\r\n -> \n)
-    content = content:gsub("\r\n", "\n")
-    vim.fn.setreg('"', content)
-    return 'p'
-end, { expr = true, silent = true })
+if is_wsl() then
+    -----------------------------------------------------------------
+    -- WSL 2: Manual clipboard bridge qua Windows
+    -----------------------------------------------------------------
 
--- 4. Vẫn giữ unnamedplus để các thao tác nội bộ Neovim đồng nhất
-vim.opt.clipboard = "unnamedplus"
+    -- Block default provider (tranh 3s hang)
+    vim.g.loaded_clipboard_provider = 1
+
+    -- Copy: yank -> PowerShell Set-Clipboard voi UTF-8 InputEncoding
+    -- clip.exe khong xu ly UTF-8 dung tu WSL, phai dung PowerShell
+    vim.api.nvim_create_autocmd("TextYankPost", {
+        group = vim.api.nvim_create_augroup("WslClipboard", { clear = true }),
+        callback = function()
+            local content = table.concat(vim.v.event.regcontents, "\n")
+            if content ~= "" then
+                vim.fn.system(
+                    'powershell.exe -NoProfile -Command "'
+                    .. '[Console]::InputEncoding = [System.Text.Encoding]::UTF8;'
+                    .. '[Console]::In.ReadToEnd() | Set-Clipboard"',
+                    content
+                )
+            end
+        end,
+    })
+
+    -- Paste: lay clipboard tu Windows (ep UTF-8 output)
+    local paste_cmd = 'powershell.exe -NoProfile -Command "'
+        .. '[Console]::OutputEncoding = [System.Text.Encoding]::UTF8;'
+        .. 'Get-Clipboard -Raw"'
+
+    local function sync_win_clipboard()
+        local content = vim.fn.system(paste_cmd)
+        -- Chuyen Windows line endings
+        content = content:gsub("\r\n", "\n")
+        -- Xoa trailing newline thua cua powershell
+        content = content:gsub("\n$", "")
+        vim.fn.setreg('"', content)
+    end
+
+    vim.keymap.set('n', 'p', function()
+        sync_win_clipboard()
+        return 'p'
+    end, { expr = true, silent = true, desc = "Paste from Windows clipboard" })
+
+    vim.keymap.set('n', 'P', function()
+        sync_win_clipboard()
+        return 'P'
+    end, { expr = true, silent = true, desc = "Paste before from Windows clipboard" })
+
+    vim.opt.clipboard = "unnamedplus"
+
+else
+    -----------------------------------------------------------------
+    -- Native Linux: dung provider system
+    -----------------------------------------------------------------
+    if vim.fn.executable('xclip') == 1 then
+        vim.g.clipboard = {
+            name = 'xclip',
+            copy = {
+                ['+'] = 'xclip -selection clipboard',
+                ['*'] = 'xclip -selection primary',
+            },
+            paste = {
+                ['+'] = 'xclip -selection clipboard -o',
+                ['*'] = 'xclip -selection primary -o',
+            },
+            cache_enabled = 0,
+        }
+    elseif vim.fn.executable('xsel') == 1 then
+        vim.g.clipboard = {
+            name = 'xsel',
+            copy = {
+                ['+'] = 'xsel --clipboard --input',
+                ['*'] = 'xsel --primary --input',
+            },
+            paste = {
+                ['+'] = 'xsel --clipboard --output',
+                ['*'] = 'xsel --primary --output',
+            },
+            cache_enabled = 0,
+        }
+    elseif vim.fn.executable('wl-copy') == 1 then
+        -- Wayland
+        vim.g.clipboard = {
+            name = 'wl-clipboard',
+            copy = {
+                ['+'] = 'wl-copy',
+                ['*'] = 'wl-copy --primary',
+            },
+            paste = {
+                ['+'] = 'wl-paste --no-newline',
+                ['*'] = 'wl-paste --no-newline --primary',
+            },
+            cache_enabled = 0,
+        }
+    end
+
+    vim.opt.clipboard = "unnamedplus"
+end
