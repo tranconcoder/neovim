@@ -114,6 +114,47 @@ install_wsl_clipboard() {
     fi
 }
 
+# Install CodeCompanion OS dependencies (curl, ripgrep, file)
+install_codecompanion_deps() {
+    print_status "Installing CodeCompanion dependencies..."
+
+    local packages=()
+
+    if ! command -v curl &> /dev/null; then
+        packages+=(curl)
+    else
+        print_success "curl already installed"
+    fi
+
+    if ! command -v rg &> /dev/null; then
+        packages+=(ripgrep)
+    else
+        print_success "ripgrep already installed"
+    fi
+
+    if ! command -v file &> /dev/null; then
+        packages+=(file)
+    else
+        print_success "file already installed"
+    fi
+
+    if [ ${#packages[@]} -gt 0 ]; then
+        print_status "Installing: ${packages[*]}"
+        if command -v apt &> /dev/null; then
+            sudo apt-get install -y "${packages[@]}"
+        elif command -v pacman &> /dev/null; then
+            sudo pacman -S --noconfirm "${packages[@]}"
+        elif command -v brew &> /dev/null; then
+            brew install "${packages[@]}"
+        else
+            print_error "Cannot install packages automatically. Please install: ${packages[*]}"
+            return 1
+        fi
+    fi
+
+    print_success "CodeCompanion dependencies ready"
+}
+
 # Create Neovim config directory if it doesn't exist
 create_config_dir() {
     CONFIG_DIR="$HOME/.config/nvim"
@@ -166,6 +207,7 @@ main() {
     install_packer
     install_pyright
     install_wsl_clipboard
+    install_codecompanion_deps
     create_config_dir
     run_neovim_setup
     

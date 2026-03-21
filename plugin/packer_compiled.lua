@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/home/tvconss/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
   },
+  ["codecompanion.nvim"] = {
+    loaded = true,
+    path = "/home/tvconss/.local/share/nvim/site/pack/packer/start/codecompanion.nvim",
+    url = "https://github.com/olimorris/codecompanion.nvim"
+  },
   ["comment-divider.nvim"] = {
     config = {
       commentLength = 64
@@ -135,6 +140,11 @@ _G.packer_plugins = {
     path = "/home/tvconss/.local/share/nvim/site/pack/packer/start/fzf-lua",
     url = "https://github.com/ibhagwan/fzf-lua"
   },
+  ["img-clip.nvim"] = {
+    loaded = true,
+    path = "/home/tvconss/.local/share/nvim/site/pack/packer/start/img-clip.nvim",
+    url = "https://github.com/HakonHarnes/img-clip.nvim"
+  },
   ["inc-rename.nvim"] = {
     config = { "\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15inc_rename\frequire\0" },
     loaded = true,
@@ -165,6 +175,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/tvconss/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["mcphub.nvim"] = {
+    loaded = true,
+    path = "/home/tvconss/.local/share/nvim/site/pack/packer/start/mcphub.nvim",
+    url = "https://github.com/ravitemer/mcphub.nvim"
   },
   ["nightfox.nvim"] = {
     loaded = true,
@@ -243,6 +258,16 @@ _G.packer_plugins = {
     path = "/home/tvconss/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/home/tvconss/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["render-markdown.nvim"] = {
+    loaded = true,
+    path = "/home/tvconss/.local/share/nvim/site/pack/packer/start/render-markdown.nvim",
+    url = "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+  },
   ["shades-of-purple.vim"] = {
     loaded = true,
     path = "/home/tvconss/.local/share/nvim/site/pack/packer/start/shades-of-purple.vim",
@@ -287,6 +312,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: inc-rename.nvim
+time([[Config for inc-rename.nvim]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15inc_rename\frequire\0", "config", "inc-rename.nvim")
+time([[Config for inc-rename.nvim]], false)
 -- Config for: comment-divider.nvim
 time([[Config for comment-divider.nvim]], true)
 time([[Config for comment-divider.nvim]], false)
@@ -294,10 +323,6 @@ time([[Config for comment-divider.nvim]], false)
 time([[Config for toggleterm.nvim]], true)
 try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
 time([[Config for toggleterm.nvim]], false)
--- Config for: inc-rename.nvim
-time([[Config for inc-rename.nvim]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15inc_rename\frequire\0", "config", "inc-rename.nvim")
-time([[Config for inc-rename.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]

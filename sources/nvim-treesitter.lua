@@ -38,3 +38,12 @@ vim.api.nvim_create_autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEn
     },
   },
 } ]]
+
+-- Ensure yaml parser is installed (required for CodeCompanion prompt library)
+local ok, ts_configs = pcall(require, 'nvim-treesitter.configs')
+if ok then
+    ts_configs.setup({
+        ensure_installed = { "yaml", "markdown", "markdown_inline" },
+        auto_install = true,
+    })
+end

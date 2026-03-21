@@ -162,6 +162,39 @@ require('packer').startup(function()
     use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 
     use "ibhagwan/fzf-lua"
+
+    -- CodeCompanion (AI chat/inline/CLI)
+    use "nvim-lua/plenary.nvim"
+    use {
+        "olimorris/codecompanion.nvim",
+        tag = "v19.1.5", -- Pinning to stable version to avoid buffer bugs
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+    }
+
+    -- Render markdown in chat buffer
+    use {
+        "MeanderingProgrammer/render-markdown.nvim",
+        requires = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons",
+        },
+    }
+
+    -- Paste images into chat buffer
+    use {
+        "HakonHarnes/img-clip.nvim",
+    }
+
+    -- MCP servers support for codebase connection
+    use {
+        "ravitemer/mcphub.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
+        },
+    }
 end)
 
 
